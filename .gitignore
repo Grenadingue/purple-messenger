@@ -1,0 +1,15 @@
+# emacs
+*~
+.*~
+
+# binaries
+*.out
+*.o
+*.lib
+
+# libpurple's custom user directory
+accounts.xml
+certificates
+icons
+prefs.xml
+status.xml
