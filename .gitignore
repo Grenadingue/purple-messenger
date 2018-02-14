@@ -2,10 +2,16 @@
 *~
 .*~
 
+# build tools
+toolchains
+
 # binaries
 *.out
 *.o
 *.lib
+
+# build output
+builds
 
 # libpurple's custom user directory
 accounts.xml
