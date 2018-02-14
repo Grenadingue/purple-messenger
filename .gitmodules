@@ -1,0 +1,6 @@
+[submodule "dependencies/libiconv"]
+	path = dependencies/libiconv
+	url = https://git.savannah.gnu.org/git/libiconv.git
+[submodule "dependencies/gnulib"]
+	path = dependencies/gnulib
+	url = git://git.savannah.gnu.org/gnulib.git

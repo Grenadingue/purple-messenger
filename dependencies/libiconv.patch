@@ -1,0 +1,25 @@
+diff --git a/autogen.sh b/autogen.sh
+index 3a0cad4..5ca6475 100755
+--- a/autogen.sh
++++ b/autogen.sh
+@@ -45,12 +45,14 @@ done
+ 
+ if test $skip_gnulib = false; then
+   if test -z "$GNULIB_TOOL"; then
+-    # Check out gnulib in a subdirectory 'gnulib'.
+-    if test -d gnulib; then
+-      (cd gnulib && git pull)
+-    else
+-      git clone git://git.savannah.gnu.org/gnulib.git
+-    fi
++    # Do not clone or pull gnulib, use the one in submobule
++    ln -sf ../gnulib gnulib
++    # # Check out gnulib in a subdirectory 'gnulib'.
++    # if test -d gnulib; then
++    #   (cd gnulib && git pull)
++    # else
++    #   git clone git://git.savannah.gnu.org/gnulib.git
++    # fi
+     # Now it should contain a gnulib-tool.
+     if test -f gnulib/gnulib-tool; then
+       GNULIB_TOOL=`pwd`/gnulib/gnulib-tool
