@@ -8,6 +8,7 @@ set -e
 SCRIPT_DIR="$(dirname "$(readlink -f "${0}")")"
 DEPENDENCY_DIR="${SCRIPT_DIR}/libiconv"
 DEFAULT_BRANCH_OR_TAG=v1.15
+BUILD_DIR="${4}"
 
 source "${SCRIPT_DIR}/build_tools.sh"
 
@@ -41,7 +42,7 @@ if [[ "${CLEAN_ONLY}" == "true" ]]; then
   exit 0
 fi
 
-create_build_dir "${4}"
+create_build_dir "${BUILD_DIR}"
 export_global_variables
 
 # NOTE: Quick and dirty workaround
