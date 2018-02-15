@@ -7,7 +7,8 @@ set -e
 
 SCRIPT_DIR="$(dirname "$(readlink -f "${0}")")"
 DEPENDENCY_DIR="${SCRIPT_DIR}/libiconv"
-DEFAULT_BRANCH_OR_TAG=v1.15
+DEPENDENCY_CVS_REFERENCE=v1.15
+GNULIB_CVS_REFERENCE=master
 BUILD_DIR="${4}"
 
 source "${SCRIPT_DIR}/build_tools.sh"
@@ -30,9 +31,9 @@ configure()
 reset()
 {
   cd "${SCRIPT_DIR}/gnulib"
-  git_reset master
+  git_reset "${GNULIB_CVS_REFERENCE}"
   cd "${DEPENDENCY_DIR}"
-  git_reset "${DEFAULT_BRANCH_OR_TAG}"
+  git_reset "${DEPENDENCY_CVS_REFERENCE}"
 }
 
 usage "${@}"
