@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # NOTE: Useful link(s)
+# https://savannah.gnu.org/projects/libiconv
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=libiconv
 
 set -e
@@ -15,6 +16,7 @@ source "${SCRIPT_DIR}/build_tools.sh"
 
 patch()
 {
+  # use existing gnulib submodule
   git apply ../libiconv.patch
 }
 
