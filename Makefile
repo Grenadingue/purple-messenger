@@ -46,6 +46,7 @@ X86_64_BUILD_DIR	=	$(PROJECT_BUILDS_DIR)/$(X86_64)
 
 # dependencies builders
 LIBICONV_BUILDER	=	$(PROJECT_DEPENCIES_DIR)/build_libiconv.sh
+LIBINTL_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_libintl.sh
 
 # makefile rules
 all: configure toolchains targets
@@ -80,13 +81,14 @@ clean_toolchains:
 
 targets: $(ARM) $(ARM64) $(X86) $(X86_64)
 
-$(ARM): $(ARM)_libiconv
 
-$(ARM64): $(ARM64)_libiconv
+$(ARM): $(ARM)_libiconv $(ARM)_libintl
 
-$(X86): $(X86)_libiconv
+$(ARM64): $(ARM64)_libiconv $(ARM64)_libintl
 
-$(X86_64): $(X86_64)_libiconv
+$(X86): $(X86)_libiconv $(X86)_libintl
+
+$(X86_64): $(X86_64)_libiconv $(X86_64)_libintl
 
 ## libiconv build
 $(ARM)_libiconv:
@@ -105,21 +107,36 @@ $(X86_64)_libiconv:
 	$(MKDIR) "$(X86_64_TOOLCHAIN_DIR)"
 	$(LIBICONV_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
 
+## libintl build
+$(ARM)_libintl:
+	$(LIBINTL_BUILDER) $(ARM_CC_PREFIX) $(ARM) "$(ARM_TOOLCHAIN_DIR)" "$(ARM_BUILD_DIR)" --clean
+
+$(ARM64)_libintl:
+	$(LIBINTL_BUILDER) $(ARM64_CC_PREFIX) $(ARM64) "$(ARM64_TOOLCHAIN_DIR)" "$(ARM64_BUILD_DIR)" --clean
+
+$(X86)_libintl:
+	$(LIBINTL_BUILDER) $(X86_CC_PREFIX) $(X86) "$(X86_TOOLCHAIN_DIR)" "$(X86_BUILD_DIR)" --clean
+
+$(X86_64)_libintl:
+	$(LIBINTL_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
+
 ## clean
 clean_targets: clean_$(ARM) clean_$(ARM64) clean_$(X86) clean_$(X86_64)
 
-clean_$(ARM): clean_libiconv
+clean_$(ARM): clean_libiconv clean_libintl
 	$(RM) "$(ARM_BUILD_DIR)"
 
-clean_$(ARM64): clean_libiconv
+clean_$(ARM64): clean_libiconv clean_libintl
 	$(RM) "$(ARM64_BUILD_DIR)"
 
-clean_$(X86): clean_libiconv
+clean_$(X86): clean_libiconv clean_libintl
 	$(RM) "$(X86_BUILD_DIR)"
 
-clean_$(X86_64): clean_libiconv
+clean_$(X86_64): clean_libiconv clean_libintl
 	$(RM) "$(X86_64_BUILD_DIR)"
 
 clean_libiconv:
 	$(LIBICONV_BUILDER) --clean-only
 
+clean_libintl:
+	$(LIBINTL_BUILDER) --clean-only

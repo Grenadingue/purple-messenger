@@ -4,3 +4,9 @@
 [submodule "dependencies/gnulib"]
 	path = dependencies/gnulib
 	url = git://git.savannah.gnu.org/gnulib.git
+[submodule "dependencies/gettext"]
+	path = dependencies/gettext
+	url = https://git.savannah.gnu.org/git/gettext.git
+[submodule "dependencies/--force"]
+	path = dependencies/--force
+	url = https://git.savannah.gnu.org/git/gettext.git
