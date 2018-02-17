@@ -48,6 +48,7 @@ X86_64_BUILD_DIR	=	$(PROJECT_BUILDS_DIR)/$(X86_64)
 LIBICONV_BUILDER	=	$(PROJECT_DEPENCIES_DIR)/build_libiconv.sh
 LIBINTL_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_libintl.sh
 LIBFFI_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_libffi.sh
+PCRE_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_pcre.sh
 
 # makefile rules
 all: configure toolchains targets
@@ -83,13 +84,13 @@ clean_toolchains:
 targets: $(ARM) $(ARM64) $(X86) $(X86_64)
 
 
-$(ARM): $(ARM)_libiconv $(ARM)_libintl $(ARM)_libffi
+$(ARM): $(ARM)_libiconv $(ARM)_libintl $(ARM)_libffi $(ARM)_pcre
 
-$(ARM64): $(ARM64)_libiconv $(ARM64)_libintl $(ARM64)_libffi
+$(ARM64): $(ARM64)_libiconv $(ARM64)_libintl $(ARM64)_libffi $(ARM64)_pcre
 
-$(X86): $(X86)_libiconv $(X86)_libintl $(X86)_libffi
+$(X86): $(X86)_libiconv $(X86)_libintl $(X86)_libffi $(X86)_pcre
 
-$(X86_64): $(X86_64)_libiconv $(X86_64)_libintl $(X86_64)_libffi
+$(X86_64): $(X86_64)_libiconv $(X86_64)_libintl $(X86_64)_libffi $(X86_64)_pcre
 
 ## libiconv build
 $(ARM)_libiconv:
@@ -134,19 +135,32 @@ $(X86)_libffi:
 $(X86_64)_libffi:
 	$(LIBFFI_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
 
+## pcre build
+$(ARM)_pcre:
+	$(PCRE_BUILDER) $(ARM_CC_PREFIX) $(ARM) "$(ARM_TOOLCHAIN_DIR)" "$(ARM_BUILD_DIR)" --clean
+
+$(ARM64)_pcre:
+	$(PCRE_BUILDER) $(ARM64_CC_PREFIX) $(ARM64) "$(ARM64_TOOLCHAIN_DIR)" "$(ARM64_BUILD_DIR)" --clean
+
+$(X86)_pcre:
+	$(PCRE_BUILDER) $(X86_CC_PREFIX) $(X86) "$(X86_TOOLCHAIN_DIR)" "$(X86_BUILD_DIR)" --clean
+
+$(X86_64)_pcre:
+	$(PCRE_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
+
 ## clean
 clean_targets: clean_$(ARM) clean_$(ARM64) clean_$(X86) clean_$(X86_64)
 
-clean_$(ARM): clean_libiconv clean_libintl clean_libffi
+clean_$(ARM): clean_libiconv clean_libintl clean_libffi clean_pcre
 	$(RM) "$(ARM_BUILD_DIR)"
 
-clean_$(ARM64): clean_libiconv clean_libintl clean_libffi
+clean_$(ARM64): clean_libiconv clean_libintl clean_libffi clean_pcre
 	$(RM) "$(ARM64_BUILD_DIR)"
 
-clean_$(X86): clean_libiconv clean_libintl clean_libffi
+clean_$(X86): clean_libiconv clean_libintl clean_libffi clean_pcre
 	$(RM) "$(X86_BUILD_DIR)"
 
-clean_$(X86_64): clean_libiconv clean_libintl clean_libffi
+clean_$(X86_64): clean_libiconv clean_libintl clean_libffi clean_pcre
 	$(RM) "$(X86_64_BUILD_DIR)"
 
 clean_libiconv:
@@ -157,3 +171,6 @@ clean_libintl:
 
 clean_libffi:
 	$(LIBFFI_BUILDER) --clean-only
+
+clean_pcre:
+	$(PCRE_BUILDER) --clean-only
