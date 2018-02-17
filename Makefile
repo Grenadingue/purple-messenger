@@ -28,7 +28,7 @@ X86_64_CC_PREFIX	=	x86_64-linux-android
 
 # project locations
 PROJECT_ROOT_DIR	=	$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
-PROJECT_DEPENCIES_DIR	=	$(PROJECT_ROOT_DIR)/dependencies
+PROJECT_DEPENCIES_DIR	=	$(PROJECT_ROOT_DIR)dependencies
 
 # toolchains locations
 PROJECT_TOOLCHAINS_DIR	=	$(PROJECT_DEPENCIES_DIR)/toolchains
