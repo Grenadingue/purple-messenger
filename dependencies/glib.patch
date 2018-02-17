@@ -1,0 +1,45 @@
+diff --git a/gio/gsocket.c b/gio/gsocket.c
+index 567b4802e..daf6bb120 100644
+--- a/gio/gsocket.c
++++ b/gio/gsocket.c
+@@ -2385,7 +2385,7 @@ g_socket_multicast_group_operation_ssm (GSocket       *socket,
+         memset (&mc_req_src, 0, sizeof (mc_req_src));
+ 
+         /* By default use the default IPv4 multicast interface. */
+-        mc_req_src.imr_interface.s_addr = g_htonl (INADDR_ANY);
++        mc_req_src.imr_interface = g_htonl (INADDR_ANY);
+ 
+         if (iface)
+           {
+@@ -2430,7 +2430,7 @@ g_socket_multicast_group_operation_ssm (GSocket       *socket,
+               }
+ 
+             iface_addr = (struct sockaddr_in *) &ifr.ifr_addr;
+-            mc_req_src.imr_interface.s_addr = iface_addr->sin_addr.s_addr;
++            mc_req_src.imr_interface = iface_addr->sin_addr.s_addr;
+ #endif  /* defined(G_OS_WIN32) && defined (HAVE_IF_NAMETOINDEX) */
+           }
+         memcpy (&mc_req_src.imr_multiaddr, g_inet_address_to_bytes (group),
+@@ -4253,7 +4253,7 @@ g_socket_condition_timed_wait (GSocket       *socket,
+ 	      timeout = 0;
+ 	  }
+       }
+-    
++
+     if (num > 1)
+       g_cancellable_release_fd (cancellable);
+ 
+@@ -5119,7 +5119,7 @@ g_socket_receive_message_with_timeout (GSocket                 *socket,
+     while (1)
+       {
+ 	result = recvmsg (socket->priv->fd, &msg, msg.msg_flags);
+-#ifdef MSG_CMSG_CLOEXEC	
++#ifdef MSG_CMSG_CLOEXEC
+ 	if (result < 0 && get_socket_errno () == EINVAL)
+ 	  {
+ 	    /* We must be running on an old kernel.  Call without the flag. */
+@@ -5862,4 +5862,3 @@ g_socket_set_option (GSocket  *socket,
+ #endif
+   return FALSE;
+ }
+-
