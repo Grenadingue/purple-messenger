@@ -10,3 +10,6 @@
 [submodule "dependencies/--force"]
 	path = dependencies/--force
 	url = https://git.savannah.gnu.org/git/gettext.git
+[submodule "dependencies/libffi"]
+	path = dependencies/libffi
+	url = https://github.com/libffi/libffi.git
