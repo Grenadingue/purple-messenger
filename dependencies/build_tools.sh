@@ -55,14 +55,6 @@ git_reset()
   git checkout "${1}"
 }
 
-svn_reset()
-{
-  [ -e .svn ] || (echo "'${PWD}': Not an svn repository!" && exit 2)
-  svn status | grep '^?' | awk '{print $2}' | xargs rm -rfv
-  svn revert --recursive .
-  svn checkout "${1}" .
-}
-
 build()
 {
   make -j8 VERBOSE=1
