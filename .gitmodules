@@ -19,3 +19,6 @@
 [submodule "dependencies/glib"]
 	path = dependencies/glib
 	url = https://github.com/GNOME/glib.git
+[submodule "dependencies/libxml2"]
+	path = dependencies/libxml2
+	url = git://git.gnome.org/libxml2
