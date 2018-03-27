@@ -22,3 +22,6 @@
 [submodule "dependencies/libxml2"]
 	path = dependencies/libxml2
 	url = git://git.gnome.org/libxml2
+[submodule "dependencies/json-glib"]
+	path = dependencies/json-glib
+	url = git://git.gnome.org/json-glib
