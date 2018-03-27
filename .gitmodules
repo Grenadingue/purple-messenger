@@ -25,3 +25,6 @@
 [submodule "dependencies/json-glib"]
 	path = dependencies/json-glib
 	url = git://git.gnome.org/json-glib
+[submodule "dependencies/libidn"]
+	path = dependencies/libidn
+	url = git://git.savannah.gnu.org/libidn.git
