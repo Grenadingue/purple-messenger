@@ -51,7 +51,9 @@ export_global_variables()
 git_reset()
 {
   [ -e .git ] || (echo "'${PWD}': Not a git repository!" && exit 2)
+  echo "Cleaning HEAD"
   git clean -fdx && git reset --hard HEAD
+  echo "Checking out '${1}'"
   git checkout "${1}"
 }
 
