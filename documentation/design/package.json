@@ -1,0 +1,15 @@
+{
+  "name": "doc-design-tools",
+  "version": "1.0.0",
+  "description": "Some documentation generation tools",
+  "main": "generate_plain_text_use_cases.sh",
+  "scripts": {
+    "start": "./generate_plain_text_use_cases.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicolas Chauvin",
+  "license": "ISC",
+  "dependencies": {
+    "fileinput": "^0.2.0"
+  }
+}

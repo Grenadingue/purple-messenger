@@ -30,8 +30,8 @@ The user must be able to configure the behavior of the application. This include
 The user must be able to configure the interface theme with some pre-defined themes, like light, dark, etc.
 
 ## Use cases tree
-- the user
-  - wants to
+* the user
+  * wants to
     - configure the application's
       - general options
         - like the processus behavior
@@ -65,7 +65,7 @@ The user must be able to configure the interface theme with some pre-defined the
               - sound options
               - vibration options
             - like the service's color
-    - access
+    * access
       - application informations
         - like the current version
         - like the changelog
@@ -89,7 +89,7 @@ The user must be able to configure the interface theme with some pre-defined the
       - to unmerge threads
       - to delete threads
       - to mute threads
-  - is
+  * is
     - notified of new messages
       - with a toast
       - with a blinking led

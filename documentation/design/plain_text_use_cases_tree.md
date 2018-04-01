@@ -1,0 +1,63 @@
+# Plain text use cases
+
+- the user wants to configure the application's
+- the user wants to configure the application's general options
+- the user wants to configure the application's general options like the processus behavior
+- the user wants to configure the application's general options like the network behavior
+- the user wants to configure the application's general options like the user's interface behavior
+- the user wants to configure the application's general options like the user's interface behavior like keyboard options
+- the user wants to configure the application's general options like the user's interface behavior like timestamps options
+- the user wants to configure the application's general options like the user's interface behavior like the notifications
+- the user wants to configure the application's general options like the user's interface behavior like the notifications global toast options
+- the user wants to configure the application's general options like the user's interface behavior like the notifications global led color options
+- the user wants to configure the application's general options like the user's interface behavior like the notifications global sound options
+- the user wants to configure the application's general options like the user's interface behavior like the notifications global vibration options
+- the user wants to configure the application's general options like the user's interface behavior like theme colors
+- the user wants to configure the application's general options like the user's interface behavior like audiovisual behavior
+- the user wants to configure the application's general options like the user's interface behavior like audiovisual behavior like auto-download
+- the user wants to configure the application's general options like the user's interface behavior like audiovisual behavior like auto-play
+- the user wants to configure the application's general options like the user's interface behavior like non-audiovisual behavior
+- the user wants to configure the application's general options like the user's interface behavior like non-audiovisual behavior like auto-download
+- the user wants to configure the application's general options like debugging behavior
+- the user wants to configure the application's general options like debugging behavior like log into a file
+- the user wants to configure the application's messaging services options
+- the user wants to configure the application's messaging services options like binding to a new service
+- the user wants to configure the application's messaging services options like deleting an existing service
+- the user wants to configure the application's messaging services options like configuring an existing service
+- the user wants to configure the application's messaging services options like configuring an existing service like muting a service
+- the user wants to configure the application's messaging services options like configuring an existing service like service dependent options
+- the user wants to configure the application's messaging services options like configuring an existing service like the user's interface behavior
+- the user wants to configure the application's messaging services options like configuring an existing service like the user's interface behavior like the service's specific notifications
+- the user wants to configure the application's messaging services options like configuring an existing service like the user's interface behavior like the service's specific notifications toast options
+- the user wants to configure the application's messaging services options like configuring an existing service like the user's interface behavior like the service's specific notifications led color options
+- the user wants to configure the application's messaging services options like configuring an existing service like the user's interface behavior like the service's specific notifications sound options
+- the user wants to configure the application's messaging services options like configuring an existing service like the user's interface behavior like the service's specific notifications vibration options
+- the user wants to configure the application's messaging services options like configuring an existing service like the user's interface behavior like the service's color
+- the user wants to access application informations
+- the user wants to access application informations like the current version
+- the user wants to access application informations like the changelog
+- the user wants to access application informations like all the licenses included
+- the user wants to access service informations
+- the user wants to access service informations like current service status
+- the user wants to access friend informations
+- the user wants to access friend informations like the last date seen online
+- the user wants to access friend informations like its status
+- the user wants to use discussion threads
+- the user wants to use discussion threads to create a new discussion
+- the user wants to use discussion threads to create a new discussion by choosing the desired service
+- the user wants to use discussion threads to create a new discussion by choosing the friends to discuss with
+- the user wants to use discussion threads to send/receive content
+- the user wants to use discussion threads to send/receive content like text messages
+- the user wants to use discussion threads to send/receive content like emoticons
+- the user wants to use discussion threads to send/receive content like binary files
+- the user wants to use discussion threads to send/receive content like binary files like audiovisual content (images, sounds, videos)
+- the user wants to use discussion threads to send/receive content like binary files like non-audiovisual content (archives, apk, ...)
+- the user wants to use discussion threads to merge threads together
+- the user wants to use discussion threads to unmerge threads
+- the user wants to use discussion threads to delete threads
+- the user wants to use discussion threads to mute threads
+- the user is notified of new messages
+- the user is notified of new messages with a toast
+- the user is notified of new messages with a blinking led
+- the user is notified of new messages with a sound
+- the user is notified of new messages with a vibration
