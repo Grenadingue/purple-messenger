@@ -84,16 +84,24 @@ clean_toolchains:
 	$(RM) "$(PROJECT_TOOLCHAINS_DIR)"
 
 # targets build
-
 targets: $(ARM) $(ARM64) $(X86) $(X86_64)
 
-$(ARM): $(ARM)_libiconv $(ARM)_libintl $(ARM)_libffi $(ARM)_pcre $(ARM)_glib $(ARM)_libxml $(ARM)_json_glib $(ARM)_libidn
+define define_build_targets_rule
+$(1):   \
+	$(1)_libiconv \
+	$(1)_libintl \
+	$(1)_libffi \
+	$(1)_pcre \
+	$(1)_glib \
+	$(1)_libxml \
+	$(1)_json_glib \
+	$(1)_libidn
+endef
 
-$(ARM64): $(ARM64)_libiconv $(ARM64)_libintl $(ARM64)_libffi $(ARM64)_pcre $(ARM64)_glib $(ARM64)_libxml $(ARM64)_json_glib $(ARM64)_libidn
-
-$(X86): $(X86)_libiconv $(X86)_libintl $(X86)_libffi $(X86)_pcre $(X86)_glib $(X86)_libxml $(X86)_json_glib $(X86)_libidn
-
-$(X86_64): $(X86_64)_libiconv $(X86_64)_libintl $(X86_64)_libffi $(X86_64)_pcre $(X86_64)_glib $(X86_64)_libxml $(X86_64)_json_glib $(X86_64)_libidn
+$(eval $(call define_build_targets_rule,$(ARM)))
+$(eval $(call define_build_targets_rule,$(ARM64)))
+$(eval $(call define_build_targets_rule,$(X86)))
+$(eval $(call define_build_targets_rule,$(X86_64)))
 
 ## libiconv build
 $(ARM)_libiconv:
@@ -206,17 +214,27 @@ $(X86_64)_libidn:
 ## clean
 clean_targets: clean_$(ARM) clean_$(ARM64) clean_$(X86) clean_$(X86_64)
 
-clean_$(ARM): clean_libiconv clean_libintl clean_libffi clean_pcre clean_glib clean_libxml clean_json_glib clean_libidn
+clean_$(ARM): clean_repositories
 	$(RM) "$(ARM_BUILD_DIR)"
 
-clean_$(ARM64): clean_libiconv clean_libintl clean_libffi clean_pcre clean_glib clean_libxml clean_json_glib clean_libidn
+clean_$(ARM64): clean_repositories
 	$(RM) "$(ARM64_BUILD_DIR)"
 
-clean_$(X86): clean_libiconv clean_libintl clean_libffi clean_pcre clean_glib clean_libxml clean_json_glib clean_libidn
+clean_$(X86): clean_repositories
 	$(RM) "$(X86_BUILD_DIR)"
 
-clean_$(X86_64): clean_libiconv clean_libintl clean_libffi clean_pcre clean_glib clean_libxml clean_json_glib clean_libidn
+clean_$(X86_64): clean_repositories
 	$(RM) "$(X86_64_BUILD_DIR)"
+
+clean_repositories: \
+	clean_libiconv \
+	clean_libintl \
+	clean_libffi \
+	clean_pcre \
+	clean_glib \
+	clean_libxml \
+	clean_json_glib \
+	clean_libidn
 
 clean_libiconv:
 	$(LIBICONV_BUILDER) --clean-only
