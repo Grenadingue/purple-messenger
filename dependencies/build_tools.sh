@@ -59,10 +59,10 @@ git_reset()
 
 build()
 {
-  make -j8 VERBOSE=1
+  make -j$(nproc) VERBOSE=1
 }
 
 install()
 {
-  make -j8 VERBOSE=1 DESTDIR=/ install
+  make -j$(nproc) VERBOSE=1 DESTDIR=/ install
 }
