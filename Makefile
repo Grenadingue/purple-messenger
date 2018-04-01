@@ -64,21 +64,16 @@ configure:
 
 toolchains: $(ARM_TOOLCHAIN_DIR) $(ARM64_TOOLCHAIN_DIR) $(X86_TOOLCHAIN_DIR) $(X86_64_TOOLCHAIN_DIR)
 
-$(ARM_TOOLCHAIN_DIR):
+define define_create_toolchain_rule
+$(2):
 	$(MKDIR) "$(PROJECT_TOOLCHAINS_DIR)"
-	$(ANDROID_TOOLCHAIN_BUILDER) --verbose --arch=$(ARM) --install-dir="$(ARM_TOOLCHAIN_DIR)"
+	$(ANDROID_TOOLCHAIN_BUILDER) --verbose --arch=$(1) --install-dir="$(2)"
+endef
 
-$(ARM64_TOOLCHAIN_DIR):
-	$(MKDIR) "$(PROJECT_TOOLCHAINS_DIR)"
-	$(ANDROID_TOOLCHAIN_BUILDER) --verbose --arch=$(ARM64) --install-dir="$(ARM64_TOOLCHAIN_DIR)"
-
-$(X86_TOOLCHAIN_DIR):
-	$(MKDIR) "$(PROJECT_TOOLCHAINS_DIR)"
-	$(ANDROID_TOOLCHAIN_BUILDER) --verbose --arch=$(X86) --install-dir="$(X86_TOOLCHAIN_DIR)"
-
-$(X86_64_TOOLCHAIN_DIR):
-	$(MKDIR) "$(PROJECT_TOOLCHAINS_DIR)"
-	$(ANDROID_TOOLCHAIN_BUILDER) --verbose --arch=$(X86_64) --install-dir="$(X86_64_TOOLCHAIN_DIR)"
+$(eval $(call define_create_toolchain_rule,$(ARM),$(ARM_TOOLCHAIN_DIR)))
+$(eval $(call define_create_toolchain_rule,$(ARM64),$(ARM64_TOOLCHAIN_DIR)))
+$(eval $(call define_create_toolchain_rule,$(X86),$(X86_TOOLCHAIN_DIR)))
+$(eval $(call define_create_toolchain_rule,$(X86_64),$(X86_64_TOOLCHAIN_DIR)))
 
 clean_toolchains:
 	$(RM) "$(PROJECT_TOOLCHAINS_DIR)"
