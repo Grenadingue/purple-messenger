@@ -103,113 +103,32 @@ $(eval $(call define_build_targets_rule,$(ARM64)))
 $(eval $(call define_build_targets_rule,$(X86)))
 $(eval $(call define_build_targets_rule,$(X86_64)))
 
-## libiconv build
-$(ARM)_libiconv:
+define define_build_target_rules
+$(ARM)_$(1):
 	$(MKDIR) "$(ARM_BUILD_DIR)"
-	$(LIBICONV_BUILDER) $(ARM_CC_PREFIX) $(ARM) "$(ARM_TOOLCHAIN_DIR)" "$(ARM_BUILD_DIR)" --clean
+	$(2) $(ARM_CC_PREFIX) $(ARM) "$(ARM_TOOLCHAIN_DIR)" "$(ARM_BUILD_DIR)" --clean
 
-$(ARM64)_libiconv:
+$(ARM64)_$(1):
 	$(MKDIR) "$(ARM64_TOOLCHAIN_DIR)"
-	$(LIBICONV_BUILDER) $(ARM64_CC_PREFIX) $(ARM64) "$(ARM64_TOOLCHAIN_DIR)" "$(ARM64_BUILD_DIR)" --clean
+	$(2) $(ARM64_CC_PREFIX) $(ARM64) "$(ARM64_TOOLCHAIN_DIR)" "$(ARM64_BUILD_DIR)" --clean
 
-$(X86)_libiconv:
+$(X86)_$(1):
 	$(MKDIR) "$(X86_TOOLCHAIN_DIR)"
-	$(LIBICONV_BUILDER) $(X86_CC_PREFIX) $(X86) "$(X86_TOOLCHAIN_DIR)" "$(X86_BUILD_DIR)" --clean
+	$(2) $(X86_CC_PREFIX) $(X86) "$(X86_TOOLCHAIN_DIR)" "$(X86_BUILD_DIR)" --clean
 
-$(X86_64)_libiconv:
+$(X86_64)_$(1):
 	$(MKDIR) "$(X86_64_TOOLCHAIN_DIR)"
-	$(LIBICONV_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
+	$(2) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
+endef
 
-## libintl build
-$(ARM)_libintl:
-	$(LIBINTL_BUILDER) $(ARM_CC_PREFIX) $(ARM) "$(ARM_TOOLCHAIN_DIR)" "$(ARM_BUILD_DIR)" --clean
-
-$(ARM64)_libintl:
-	$(LIBINTL_BUILDER) $(ARM64_CC_PREFIX) $(ARM64) "$(ARM64_TOOLCHAIN_DIR)" "$(ARM64_BUILD_DIR)" --clean
-
-$(X86)_libintl:
-	$(LIBINTL_BUILDER) $(X86_CC_PREFIX) $(X86) "$(X86_TOOLCHAIN_DIR)" "$(X86_BUILD_DIR)" --clean
-
-$(X86_64)_libintl:
-	$(LIBINTL_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
-
-## libffi build
-$(ARM)_libffi:
-	$(LIBFFI_BUILDER) $(ARM_CC_PREFIX) $(ARM) "$(ARM_TOOLCHAIN_DIR)" "$(ARM_BUILD_DIR)" --clean
-
-$(ARM64)_libffi:
-	$(LIBFFI_BUILDER) $(ARM64_CC_PREFIX) $(ARM64) "$(ARM64_TOOLCHAIN_DIR)" "$(ARM64_BUILD_DIR)" --clean
-
-$(X86)_libffi:
-	$(LIBFFI_BUILDER) $(X86_CC_PREFIX) $(X86) "$(X86_TOOLCHAIN_DIR)" "$(X86_BUILD_DIR)" --clean
-
-$(X86_64)_libffi:
-	$(LIBFFI_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
-
-## pcre build
-$(ARM)_pcre:
-	$(PCRE_BUILDER) $(ARM_CC_PREFIX) $(ARM) "$(ARM_TOOLCHAIN_DIR)" "$(ARM_BUILD_DIR)" --clean
-
-$(ARM64)_pcre:
-	$(PCRE_BUILDER) $(ARM64_CC_PREFIX) $(ARM64) "$(ARM64_TOOLCHAIN_DIR)" "$(ARM64_BUILD_DIR)" --clean
-
-$(X86)_pcre:
-	$(PCRE_BUILDER) $(X86_CC_PREFIX) $(X86) "$(X86_TOOLCHAIN_DIR)" "$(X86_BUILD_DIR)" --clean
-
-$(X86_64)_pcre:
-	$(PCRE_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
-
-## glib build
-$(ARM)_glib:
-	$(GLIB_BUILDER) $(ARM_CC_PREFIX) $(ARM) "$(ARM_TOOLCHAIN_DIR)" "$(ARM_BUILD_DIR)" --clean
-
-$(ARM64)_glib:
-	$(GLIB_BUILDER) $(ARM64_CC_PREFIX) $(ARM64) "$(ARM64_TOOLCHAIN_DIR)" "$(ARM64_BUILD_DIR)" --clean
-
-$(X86)_glib:
-	$(GLIB_BUILDER) $(X86_CC_PREFIX) $(X86) "$(X86_TOOLCHAIN_DIR)" "$(X86_BUILD_DIR)" --clean
-
-$(X86_64)_glib:
-	$(GLIB_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
-
-## libxml build
-$(ARM)_libxml:
-	$(LIBXML_BUILDER) $(ARM_CC_PREFIX) $(ARM) "$(ARM_TOOLCHAIN_DIR)" "$(ARM_BUILD_DIR)" --clean
-
-$(ARM64)_libxml:
-	$(LIBXML_BUILDER) $(ARM64_CC_PREFIX) $(ARM64) "$(ARM64_TOOLCHAIN_DIR)" "$(ARM64_BUILD_DIR)" --clean
-
-$(X86)_libxml:
-	$(LIBXML_BUILDER) $(X86_CC_PREFIX) $(X86) "$(X86_TOOLCHAIN_DIR)" "$(X86_BUILD_DIR)" --clean
-
-$(X86_64)_libxml:
-	$(LIBXML_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
-
-## json_glib build
-$(ARM)_json_glib:
-	$(JSON_GLIB_BUILDER) $(ARM_CC_PREFIX) $(ARM) "$(ARM_TOOLCHAIN_DIR)" "$(ARM_BUILD_DIR)" --clean
-
-$(ARM64)_json_glib:
-	$(JSON_GLIB_BUILDER) $(ARM64_CC_PREFIX) $(ARM64) "$(ARM64_TOOLCHAIN_DIR)" "$(ARM64_BUILD_DIR)" --clean
-
-$(X86)_json_glib:
-	$(JSON_GLIB_BUILDER) $(X86_CC_PREFIX) $(X86) "$(X86_TOOLCHAIN_DIR)" "$(X86_BUILD_DIR)" --clean
-
-$(X86_64)_json_glib:
-	$(JSON_GLIB_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
-
-## libidn build
-$(ARM)_libidn:
-	$(LIBIDN_BUILDER) $(ARM_CC_PREFIX) $(ARM) "$(ARM_TOOLCHAIN_DIR)" "$(ARM_BUILD_DIR)" --clean
-
-$(ARM64)_libidn:
-	$(LIBIDN_BUILDER) $(ARM64_CC_PREFIX) $(ARM64) "$(ARM64_TOOLCHAIN_DIR)" "$(ARM64_BUILD_DIR)" --clean
-
-$(X86)_libidn:
-	$(LIBIDN_BUILDER) $(X86_CC_PREFIX) $(X86) "$(X86_TOOLCHAIN_DIR)" "$(X86_BUILD_DIR)" --clean
-
-$(X86_64)_libidn:
-	$(LIBIDN_BUILDER) $(X86_64_CC_PREFIX) $(X86_64) "$(X86_64_TOOLCHAIN_DIR)" "$(X86_64_BUILD_DIR)" --clean
+$(eval $(call define_build_target_rules,libiconv,$(LIBICONV_BUILDER)))
+$(eval $(call define_build_target_rules,libintl,$(LIBINTL_BUILDER)))
+$(eval $(call define_build_target_rules,libffi,$(LIBFFI_BUILDER)))
+$(eval $(call define_build_target_rules,pcre,$(PCRE_BUILDER)))
+$(eval $(call define_build_target_rules,glib,$(GLIB_BUILDER)))
+$(eval $(call define_build_target_rules,libxml,$(LIBXML_BUILDER)))
+$(eval $(call define_build_target_rules,json_glib,$(JSON_GLIB_BUILDER)))
+$(eval $(call define_build_target_rules,libidn,$(LIBIDN_BUILDER)))
 
 ## clean
 clean_targets: clean_$(ARM) clean_$(ARM64) clean_$(X86) clean_$(X86_64)
