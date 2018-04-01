@@ -45,14 +45,14 @@ X86_BUILD_DIR		=	$(PROJECT_BUILDS_DIR)/$(X86)
 X86_64_BUILD_DIR	=	$(PROJECT_BUILDS_DIR)/$(X86_64)
 
 # dependencies builders
-LIBICONV_BUILDER	=	$(PROJECT_DEPENCIES_DIR)/build_libiconv.sh
-LIBINTL_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_libintl.sh
-LIBFFI_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_libffi.sh
-PCRE_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_pcre.sh
-GLIB_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_glib.sh
-LIBXML_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_libxml.sh
-JSON_GLIB_BUILDER	=	$(PROJECT_DEPENCIES_DIR)/build_json_glib.sh
-LIBIDN_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_libidn.sh
+LIBICONV_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_libiconv.sh
+LIBINTL_BUILDER			=	$(PROJECT_DEPENCIES_DIR)/build_libintl.sh
+LIBFFI_BUILDER			=	$(PROJECT_DEPENCIES_DIR)/build_libffi.sh
+PCRE_BUILDER			=	$(PROJECT_DEPENCIES_DIR)/build_pcre.sh
+GLIB_BUILDER			=	$(PROJECT_DEPENCIES_DIR)/build_glib.sh
+LIBXML_BUILDER			=	$(PROJECT_DEPENCIES_DIR)/build_libxml.sh
+JSON_GLIB_BUILDER		=	$(PROJECT_DEPENCIES_DIR)/build_json_glib.sh
+LIBIDN_BUILDER			=	$(PROJECT_DEPENCIES_DIR)/build_libidn.sh
 
 # makefile rules
 all: configure toolchains targets
