@@ -150,26 +150,16 @@ clean_repositories: \
 	clean_json_glib \
 	clean_libidn
 
-clean_libiconv:
-	$(LIBICONV_BUILDER) --clean-only
+define define_clean_target_rule
+clean_$(1):
+	$(2) --clean-only
+endef
 
-clean_libintl:
-	$(LIBINTL_BUILDER) --clean-only
-
-clean_libffi:
-	$(LIBFFI_BUILDER) --clean-only
-
-clean_pcre:
-	$(PCRE_BUILDER) --clean-only
-
-clean_glib:
-	$(GLIB_BUILDER) --clean-only
-
-clean_libxml:
-	$(LIBXML_BUILDER) --clean-only
-
-clean_json_glib:
-	$(JSON_GLIB_BUILDER) --clean-only
-
-clean_libidn:
-	$(LIBIDN_BUILDER) --clean-only
+$(eval $(call define_clean_target_rule,libiconv,$(LIBICONV_BUILDER)))
+$(eval $(call define_clean_target_rule,libintl,$(LIBINTL_BUILDER)))
+$(eval $(call define_clean_target_rule,libffi,$(LIBFFI_BUILDER)))
+$(eval $(call define_clean_target_rule,pcre,$(PCRE_BUILDER)))
+$(eval $(call define_clean_target_rule,glib,$(GLIB_BUILDER)))
+$(eval $(call define_clean_target_rule,libxml,$(LIBXML_BUILDER)))
+$(eval $(call define_clean_target_rule,json_glib,$(JSON_GLIB_BUILDER)))
+$(eval $(call define_clean_target_rule,libidn,$(LIBIDN_BUILDER)))
